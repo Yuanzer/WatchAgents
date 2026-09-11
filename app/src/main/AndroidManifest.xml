@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 联网(DeepSeek 对话/联网搜索) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--
+      不申请 ACCESS_WIFI_STATE：它会被系统"隐含推导"成 android.hardware.wifi 必需硬件，
+      蓝牙代理上网 / 无 Wi-Fi 模块的手表会被过滤掉；代码里也没有任何 Wi-Fi API 调用。
+    -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- 本地文件与照片读取（非 root 下的最高读权限；运行时授权，工具侧有守卫） -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Android 14+ 的「仅选中的照片」授权，低版本系统会忽略该权限声明 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+
+    <!--
+      跨机型安装兼容：不声明 android.hardware.type.watch。
+      - 声明为 required=true 会让没上报该 feature 的手表（HarmonyOS / 国产安卓手表）装不上；
+      - 声明为 required=false 本身是无效属性（lint: InvalidWearFeatureAttribute）。
+      触摸屏声明 required=false 只是避免被隐式过滤，不影响任何机型的安装。
+    -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".WaApp"
+        android:allowBackup="false"
+        android:enableOnBackInvokedCallback="true"
+        android:hasCode="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true">
+
+        <!--
+          独立运行声明：本 App 不需要手机端配套应用。
+          Wear OS 2.x 上缺这个 meta-data 会被当成"需要手机伴侣"的应用，列表/可用性受限。
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <!--
+          configChanges：方表/长条表可能横竖旋转，部分手表还会在字体大小、语言、
+          深色模式、DPI 变化时重建 Activity。声明后由 Compose 自行按新 Configuration
+          重组布局，不会重建 Activity——否则正在流式输出的回答会随重建一起丢失。
+          taskAffinity="" 是 Wear 官方建议：让手表"最近任务"里正确显示本应用。
+        -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|navigation|uiMode|density|fontScale|layoutDirection|locale|touchscreen"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.WA"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,16 @@
+# 统一换行符：仓库内存 LF，避免 Windows/macOS 贡献者互相制造整文件 diff
+* text=auto eol=lf
+
+# Windows 批处理必须是 CRLF，否则 cmd 解析异常
+*.bat text eol=crlf
+
+# 二进制文件不做换行转换
+*.jar binary
+*.zip binary
+*.png binary
+*.webp binary
+*.jpg binary
+*.ttf binary
+*.otf binary
+*.keystore binary
+*.jks binary

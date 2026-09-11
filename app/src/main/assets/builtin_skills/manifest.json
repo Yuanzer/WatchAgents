@@ -1,0 +1,74 @@
+{
+  "skills": [
+    {
+      "id": "self-improving-agent",
+      "name": "self-improving-agent",
+      "description": "Built-in self-improvement loop. Use to record non-trivial failures, user corrections, and reusable best practices into structured learnings.",
+      "assetPath": "builtin_skills/self-improving-agent",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "runbook",
+      "name": "runbook",
+      "description": "把反复出现的常见问题、失败原因和修复步骤写入 runbook 文档，下次遇到同类问题先查文档再动手，避免重复犯错。当用户遇到重复故障、要求记一下这个问题、或需要沉淀排查经验时使用。",
+      "assetPath": "builtin_skills/runbook",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "semantic-memory",
+      "name": "semantic-memory",
+      "description": "使用 memory_search 对本机长期记忆做语义召回，措辞不同也能找到相关片段。当需要回忆过往、任务需要上下文、或关键词检索失败时使用。",
+      "assetPath": "builtin_skills/semantic-memory",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "daily-log",
+      "name": "daily-log",
+      "description": "维护按天归档的记忆日志，把当天的重要事件、决策、对话要点沉淀到记忆里，方便日后语义检索回溯。",
+      "assetPath": "builtin_skills/daily-log",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "memory-curator",
+      "name": "memory-curator",
+      "description": "定期整理长期记忆：去重、更新过期事实、把一次性信息降级或删除，保持 MEMORY.md 精炼可检索。",
+      "assetPath": "builtin_skills/memory-curator",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "file-workspace",
+      "name": "file-workspace",
+      "description": "在手表本机工作区用 files_* 工具读写文件（笔记、清单、草稿、生成的文档）。当用户说「存一下/写到文件/读我存的文件/改一下那个文件/创建个文件/整理笔记」等涉及本机文件持久化时使用。",
+      "assetPath": "builtin_skills/file-workspace",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    },
+    {
+      "id": "media-reader",
+      "name": "media-reader",
+      "description": "用 media_list / media_read 检索并读取手表相册照片与文档。当用户提到「我照片里的/最近拍的照片/下载的文档/本机文件」等相册与文档内容时使用；文本类文档可读全文，照片只能读元数据（无视觉模型时如实说明）。",
+      "assetPath": "builtin_skills/media-reader",
+      "hasScripts": false,
+      "hasReferences": false,
+      "hasAssets": false,
+      "hasEvals": false
+    }
+  ]
+}
