@@ -1,4 +1,5 @@
 # Watchagents（WA）
+## 在你的手表上直接跑一个本地优先的 AI 智能体——无需 root，无需手机中转，DeepSeek 直连，支持长期记忆
 
 运行在 Android / HarmonyOS 手表上的轻量 AI 智能体。无需 root、无需 Xposed。
 
