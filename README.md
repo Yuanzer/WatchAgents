@@ -6,6 +6,7 @@
 
 - 应用名 **WA**（全名 **Watchagents**），包名 `com.watchagents.wa`
 - 当前版本 **1.0.0**（首个公开版本，功能等价于内部迭代版 3.3.4）
+- 下载 APK：**[Releases → v1.0.0](https://github.com/Yuanzer/WatchAgents/releases/latest)**（`WA-1.0.0-release.apk`，已签名；安装步骤见下文「安装到手表」）
 
 ## 功能清单
 
